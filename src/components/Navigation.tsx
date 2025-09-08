@@ -1,8 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
+import BookingModal from "./BookingModal";
+import { useState } from "react";
 
 const Navigation = () => {
   const location = useLocation();
+  const [bookingModal, setBookingModal] = useState<{ isOpen: boolean; type: "trial" | "csr" }>({
+    isOpen: false,
+    type: "trial"
+  });
 
   const navItems = [
     { path: "/", label: "Home" },
@@ -43,15 +49,31 @@ const Navigation = () => {
 
           {/* CTA Buttons */}
           <div className="flex items-center space-x-4">
-            <Button variant="outline" size="sm" className="hidden sm:flex">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="hidden sm:flex"
+              onClick={() => setBookingModal({ isOpen: true, type: "csr" })}
+            >
               CSR Inquiry
             </Button>
-            <Button variant="power" size="sm">
+            <Button 
+              variant="power" 
+              size="sm"
+              onClick={() => setBookingModal({ isOpen: true, type: "trial" })}
+            >
               Free Trial
             </Button>
           </div>
         </div>
       </div>
+
+      {/* Booking Modal */}
+      <BookingModal
+        isOpen={bookingModal.isOpen}
+        onClose={() => setBookingModal({ ...bookingModal, isOpen: false })}
+        type={bookingModal.type}
+      />
     </nav>
   );
 };

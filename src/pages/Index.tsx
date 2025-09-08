@@ -1,4 +1,5 @@
 import Navigation from "@/components/Navigation";
+import BookingModal from "@/components/BookingModal";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -8,6 +9,10 @@ import { useState, useEffect } from "react";
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [bookingModal, setBookingModal] = useState<{ isOpen: boolean; type: "trial" | "csr" }>({
+    isOpen: false,
+    type: "trial"
+  });
   
   // Auto-sliding carousel images
   const carouselImages = [
@@ -53,11 +58,21 @@ const Index = () => {
             Join our community of champions and discover your potential.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="power" size="lg" className="text-lg px-8 py-4">
+            <Button 
+              variant="power" 
+              size="lg" 
+              className="text-lg px-8 py-4"
+              onClick={() => setBookingModal({ isOpen: true, type: "trial" })}
+            >
               Book Free Trial
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-            <Button variant="secondary-power" size="lg" className="text-lg px-8 py-4">
+            <Button 
+              variant="secondary-power" 
+              size="lg" 
+              className="text-lg px-8 py-4"
+              onClick={() => setBookingModal({ isOpen: true, type: "csr" })}
+            >
               CSR Inquiry
             </Button>
           </div>
@@ -138,8 +153,12 @@ const Index = () => {
                   His philosophy centers on developing not just skilled martial artists, but well-rounded individuals who carry 
                   the values of Taekwondo into every aspect of their lives.
                 </p>
-                <Button variant="power" size="lg">
-                  Learn More About Our Coaches
+                <Button 
+                  variant="power" 
+                  size="lg"
+                  onClick={() => setBookingModal({ isOpen: true, type: "trial" })}
+                >
+                  Book Free Trial Class
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </div>
@@ -279,6 +298,13 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {/* Booking Modal */}
+      <BookingModal
+        isOpen={bookingModal.isOpen}
+        onClose={() => setBookingModal({ ...bookingModal, isOpen: false })}
+        type={bookingModal.type}
+      />
     </div>
   );
 };
