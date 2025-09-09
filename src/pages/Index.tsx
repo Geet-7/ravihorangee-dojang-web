@@ -158,8 +158,8 @@ const Index = () => {
                   Meet Master Ravindra Bhandari
                 </h2>
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  With over two decades of dedicated practice and teaching, Master Ravindra Bhandari (affectionately known as "Ravi Sir") 
-                  brings authentic Taekwondo wisdom and modern coaching techniques to every student's journey.
+                  Master Ravindra Bhandari, 6th Dan Black Belt W.T. (South Korea), Hapkkido 5th Dan (WHMAF, South Korea), and President of R.B. Horangee, has been shaping martial artists since 2001. A proud member of Kukkiwon and founding member of GTTF, he now mentors over 1,000 students, blending authentic Taekwondo tradition with modern coaching to build both skilled fighters and strong individuals.
+
                 </p>
                 <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                   His philosophy centers on developing not just skilled martial artists, but well-rounded individuals who carry 
