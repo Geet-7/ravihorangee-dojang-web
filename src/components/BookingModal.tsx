@@ -261,11 +261,11 @@ const BookingModal = ({ isOpen, onClose, type }: BookingModalProps) => {
             <div className="grid md:grid-cols-2 gap-4 text-sm">
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-primary" />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 97678 93261</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-primary" />
-                <span>info@rbhorangee.com</span>
+                <span>rbhorangee@gmail.com</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-primary" />

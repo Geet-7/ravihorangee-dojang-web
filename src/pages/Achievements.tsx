@@ -115,11 +115,11 @@ const Achievements = () => {
 
               {/* Gallery Section */}
               <div className="mt-12">
-                <h3 className="text-2xl font-bold text-center mb-8">Achievement Gallery</h3>
+                <h3 className="text-2xl font-bold text-center mb-8">Newspaper Clippings</h3>
                 <div className="grid md:grid-cols-3 gap-6">
                   {[1, 2, 3, 4, 5, 6].map((item) => (
                     <Card key={item} className="martial-card group cursor-pointer">
-                      <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center relative overflow-hidden">
+                      <div className="aspect-video   bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center relative overflow-hidden">
                         <Medal className="w-12 h-12 text-primary/60 group-hover:scale-110 transition-transform duration-300" />
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
                           <Play className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

@@ -11,6 +11,9 @@ import { ArrowRight, Shield, Trophy, Users, Heart } from "lucide-react";
 import { useState, useEffect } from "react";
 import raviSirImg from "@/assets/ravi-sir-img.png";
 import logo from "@/assets/logo.png";
+import fb from "@/assets/fb logo.png";
+import ig from "@/assets/ig logo.png";
+import li from "@/assets/linkedin.png";
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -292,15 +295,30 @@ const Index = () => {
             <div>
               <h4 className="font-bold mb-4">Follow Us</h4>
               <div className="flex space-x-4">
-                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                  <span className="text-xs">f</span>
-                </div>
-                <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
-                  <span className="text-xs">ig</span>
-                </div>
-                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                  <span className="text-xs">yt</span>
-                </div>
+                <a
+                  href="https://www.facebook.com/ravindra.bhandari.71"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center"
+                >
+                  <img src={fb} alt="facebook" className="w-full h-full object-cover block" />
+                </a>
+                <a
+                  href="https://www.instagram.com/rbhorangee?igsh=aTFoc3EzZWtidmZm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center"
+                >
+                  <img src={ig} alt="instagram" className="w-full h-full object-cover block" />
+                </a>
+                <a
+                  href="https://linkedin.com/in/yourprofile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center"
+                >
+                  <img src={li} alt="LinkedIN" className="w-full h-full object-cover block" />
+                </a>
               </div>
             </div>
           </div>
