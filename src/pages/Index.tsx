@@ -287,7 +287,7 @@ const Index = () => {
               <h4 className="font-bold mb-4">Quick Links</h4>
               <ul className="space-y-2 text-sm">
                 <li><a href="/about" className="text-white/70 hover:text-white transition-colors">About Us</a></li>
-                <li><a href="/coaches" className="text-white/70 hover:text-white transition-colors">Coaches</a></li>
+                {/* <li><a href="/coaches" className="text-white/70 hover:text-white transition-colors">Coaches</a></li> */}
                 <li><a href="/achievements" className="text-white/70 hover:text-white transition-colors">Achievements and Events</a></li>
               </ul>
             </div>

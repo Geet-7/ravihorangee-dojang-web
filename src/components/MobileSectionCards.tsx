@@ -12,13 +12,13 @@ const MobileSectionCards = () => {
       link: "/about",
       color: "from-primary to-primary-glow"
     },
-    {
-      title: "Coaches Section", 
-      description: "Meet our experienced instructors and dedicated students who make our dojo special.",
-      icon: Users,
-      link: "/coaches",
-      color: "from-secondary to-secondary-glow"
-    },
+    // {
+    //   title: "Coaches Section", 
+    //   description: "Meet our experienced instructors and dedicated students who make our dojo special.",
+    //   icon: Users,
+    //   link: "/coaches",
+    //   color: "from-secondary to-secondary-glow"
+    // },
     {
       title: "Achievements and Events Section",
       description: "Discover our competition successes, hosted tournaments, and upcoming events.",

@@ -16,7 +16,7 @@ const MobileNavigation = () => {
   const navItems = [
     { path: "/", label: "Home" },
     { path: "/about", label: "About" },
-    { path: "/coaches", label: "Coaches" },
+    // { path: "/coaches", label: "Coaches" },
     { path: "/achievements", label: "Achievements and Events" },
   ];
 
