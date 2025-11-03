@@ -4,8 +4,32 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Trophy, Medal, Star, Calendar, Download, Play } from "lucide-react";
+import { useState, useEffect } from "react";
+import heroImage from "@/assets/hero-coach.jpg"; // Update with your competition images
 
 const Achievements = () => {
+  // Add state for competition glimpses
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Add competition glimpses images array
+  const competitionImages = [
+    { src: heroImage, alt: "National Championship 2024" },
+    { src: heroImage, alt: "Regional Tournament 2024" },
+    { src: heroImage, alt: "Youth Competition" },
+    { src: heroImage, alt: "Poomsae Championship" },
+    { src: heroImage, alt: "Team Performance" },
+    { src: heroImage, alt: "Award Ceremony" }
+  ];
+
+  // Add auto-sliding effect
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % competitionImages.length);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   const achievements = [
     {
       title: "National Championship Gold",
@@ -145,6 +169,8 @@ const Achievements = () => {
 
             {/* Competitions Tab */}
             <TabsContent value="competitions" className="space-y-8">
+              
+              {/* Existing competitions grid */}
               <div className="grid md:grid-cols-2 gap-8">
                 {competitions.map((competition, index) => (
                   <Card key={index} className="martial-card">
@@ -161,6 +187,47 @@ const Achievements = () => {
                   </Card>
                 ))}
               </div>
+              
+              
+              {/* Competition Glimpses Carousel */}
+              <section className="py-12 bg-muted/30 rounded-xl">
+                <div className="container mx-auto px-4">
+                  <h3 className="text-3xl font-bold text-center text-foreground mb-12">
+                    Competition Glimpses
+                  </h3>
+                  
+                  <div className="max-w-4xl mx-auto relative">
+                    <div className="aspect-video rounded-2xl overflow-hidden relative">
+                      <img
+                        src={competitionImages[currentSlide].src}
+                        alt={competitionImages[currentSlide].alt}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                      <div className="absolute bottom-6 left-6 text-white">
+                        <h3 className="text-2xl font-bold">
+                          {competitionImages[currentSlide].alt}
+                        </h3>
+                      </div>
+                    </div>
+                    
+                    {/* Carousel Indicators */}
+                    <div className="flex justify-center space-x-2 mt-6">
+                      {competitionImages.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setCurrentSlide(index)}
+                          className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                            index === currentSlide ? 'bg-primary' : 'bg-muted-foreground/30'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              
             </TabsContent>
 
             {/* Events Tab */}
