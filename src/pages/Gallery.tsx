@@ -48,7 +48,7 @@ const Gallery = () => {
     section4: {
       name: "Competitions played",
       images: [
-        { src: "", alt: "Gallery Image 1" },
+        { src: " @/assets/gallery/gal_comp_host (1).jpg", alt: "Gallery Image 1" },
         { src: "", alt: "Gallery Image 2" },
         { src: "", alt: "Gallery Image 3" },
         { src: "", alt: "Gallery Image 4" },
