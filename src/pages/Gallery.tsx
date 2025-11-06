@@ -35,18 +35,7 @@ const Gallery = () => {
       ]
     },
     section3: {
-      name: "Competitions hosted",
-      images: [
-        { src: "", alt: "Gallery Image 1" },
-        { src: "", alt: "Gallery Image 2" },
-        { src: "", alt: "Gallery Image 3" },
-        { src: "", alt: "Gallery Image 4" },
-        { src: "", alt: "Gallery Image 5" },
-        { src: "", alt: "Gallery Image 6" },
-      ]
-    },
-    section4: {
-      name: "Competitions played",
+      name: "Competitions",
       images: [
         { src: "", alt: "Gallery Image 1" },
         { src: "", alt: "Gallery Image 2" },
@@ -56,6 +45,17 @@ const Gallery = () => {
         { src: "", alt: "Gallery Image 6" },
       ]
     }
+    // section4: {
+    //   name: "Competitions played",
+    //   images: [
+    //     { src: "", alt: "Gallery Image 1" },
+    //     { src: "", alt: "Gallery Image 2" },
+    //     { src: "", alt: "Gallery Image 3" },
+    //     { src: "", alt: "Gallery Image 4" },
+    //     { src: "", alt: "Gallery Image 5" },
+    //     { src: "", alt: "Gallery Image 6" },
+    //   ]
+    // }
   };
 
   const renderGalleryGrid = (images: { src: string; alt: string }[]) => (
@@ -106,11 +106,11 @@ const Gallery = () => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="section1" className="max-w-7xl mx-auto">
-            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-12">
+            <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 mb-12">
               <TabsTrigger value="section1">{galleryCategories.section1.name}</TabsTrigger>
               <TabsTrigger value="section2">{galleryCategories.section2.name}</TabsTrigger>
               <TabsTrigger value="section3">{galleryCategories.section3.name}</TabsTrigger>
-              <TabsTrigger value="section4">{galleryCategories.section4.name}</TabsTrigger>
+              {/* <TabsTrigger value="section4">{galleryCategories.section4.name}</TabsTrigger> */}
             </TabsList>
 
             {/* Section 1 Tab */}
@@ -129,9 +129,9 @@ const Gallery = () => {
             </TabsContent>
 
             {/* Section 4 Tab */}
-            <TabsContent value="section4" className="space-y-8">
+            {/* <TabsContent value="section4" className="space-y-8">
               {renderGalleryGrid(galleryCategories.section4.images)}
-            </TabsContent>
+            </TabsContent> */}
           </Tabs>
         </div>
       </section>
