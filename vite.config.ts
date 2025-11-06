@@ -15,5 +15,7 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+
+  assetsInclude: ["**/*.JPG"],
   base: './', // <-- important for Netlify!
 }));

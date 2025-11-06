@@ -6,6 +6,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Camera } from "lucide-react";
 import { useState } from "react";
 
+//import images below.
+import image1_1 from "@/assets/gallery/section1/gal_comp_host_1.JPG"; // import all the images like this
+
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
@@ -15,7 +18,7 @@ const Gallery = () => {
       name: "Class Training",
       images: [
         // Add your images here like: { src: import_path, alt: "description" }
-        { src: "", alt: "Gallery Image 1" },
+        { src: image1_1, alt: "Gallery Image 1" },
         { src: "", alt: "Gallery Image 2" },
         { src: "", alt: "Gallery Image 3" },
         { src: "", alt: "Gallery Image 4" },
