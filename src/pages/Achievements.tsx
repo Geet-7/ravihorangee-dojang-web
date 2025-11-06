@@ -9,6 +9,7 @@ import heroImage from "@/assets/hero-coach.jpg";
 import clip1 from "../assets/Newspaper-clip/clip (1).jpg";
 import clip2 from "../assets/Newspaper-clip/clip (2).jpg";
 import clip3 from "../assets/Newspaper-clip/clip (3).jpg";
+import Footer from "@/components/Footer";
 
 const Achievements = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -194,6 +195,7 @@ const Achievements = () => {
           </Tabs>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };
