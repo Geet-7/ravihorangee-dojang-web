@@ -61,25 +61,24 @@ const Gallery = () => {
   const renderGalleryGrid = (images: { src: string; alt: string }[]) => (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {images.map((image, index) => (
-        <Card 
-          key={index} 
-          className="martial-card group cursor-pointer overflow-hidden"
+        <Card
+          key={index}
+          className="martial-card group cursor-pointer overflow-hidden p-0"
           onClick={() => setSelectedImage(image.src)}
         >
-          <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center relative overflow-hidden">
+          <div className="relative w-full aspect-video rounded-lg overflow-hidden">
             {image.src ? (
               <img
                 src={image.src}
                 alt={image.alt}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
               />
             ) : (
-              <Camera className="w-12 h-12 text-primary/60 group-hover:scale-110 transition-transform duration-300" />
+              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/20">
+                <Camera className="w-12 h-12 text-primary/60" />
+              </div>
             )}
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
-          </div>
-          <div className="p-4">
-            <p className="text-sm text-muted-foreground text-center">{image.alt}</p>
           </div>
         </Card>
       ))}
