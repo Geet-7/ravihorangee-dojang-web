@@ -156,7 +156,7 @@ const Gallery: React.FC = () => {
   const [allLoaded, setAllLoaded] = useState(false);
   const sentinelRef = useRef<HTMLDivElement | null>(null);
 
-  // Track loaded state for each image
+  // Track loaded state for each imageadd
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
 
   // Add new state for tracking row loading
@@ -173,6 +173,22 @@ const Gallery: React.FC = () => {
   // lazy loaders (do not use globEager)
   const loaders = import.meta.glob("../assets/gallery/**/*.{jpg,jpeg,png,webp,svg,JPG,JPEG,PNG,WEBP}");
   const paths = Object.keys(loaders).sort();
+
+  // --- SECTIONED PATHS: map files to section folders (expects folders named 'section1','section2','section3') ---
+  const sectionPaths: Record<string, string[]> = {
+    section1: paths.filter((p) => p.includes("/section1/")),
+    section2: paths.filter((p) => p.includes("/section2/")),
+    section3: paths.filter((p) => p.includes("/section3/")),
+  };
+
+  // Per-section gallery state (persist loaded images per section)
+  const [galleryBySection, setGalleryBySection] = useState<
+    Record<string, { src: string; alt: string }[]>
+  >({
+    section1: [],
+    section2: [],
+    section3: [],
+  });
 
   // Helper to get row size based on viewport
   const getRowSize = () => {
