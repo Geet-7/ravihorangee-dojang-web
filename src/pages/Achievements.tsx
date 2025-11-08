@@ -12,17 +12,22 @@ import clip2 from "../assets/Newspaper-clip/clip (2).jpg";
 import clip3 from "../assets/Newspaper-clip/clip (3).jpg";
 import Footer from "@/components/Footer";
 
+// ADD THESE IMPORTS FOR COMPETITION CAROUSEL
+import compCarousel1 from "@/assets/competition-carousel/gal_comp_host (8).JPG";
+import compCarousel2 from "@/assets/competition-carousel/gal_comp_host (56).JPG";
+import compCarousel3 from "@/assets/competition-carousel/gal_comp_host (78).JPG";
+import compCarousel4 from "@/assets/competition-carousel/gal_comp_host (90).JPG";
+
 const Achievements = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showAllAchievements, setShowAllAchievements] = useState(false);
 
+  // UPDATE COMPETITION IMAGES TO USE COMPETITION-CAROUSEL FOLDER
   const competitionImages = [
-    { src: heroImage, alt: "National Championship 2024" },
-    { src: heroImage, alt: "Regional Tournament 2024" },
-    { src: heroImage, alt: "Youth Competition" },
-    { src: heroImage, alt: "Poomsae Championship" },
-    { src: heroImage, alt: "Team Performance" },
-    { src: heroImage, alt: "Award Ceremony" }
+    { src: compCarousel1, alt: "" },
+    { src: compCarousel2, alt: "" },
+    { src: compCarousel3, alt: "" },
+    { src: compCarousel4, alt: "" }
   ];
 
   useEffect(() => {

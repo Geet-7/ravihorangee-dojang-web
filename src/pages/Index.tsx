@@ -12,19 +12,25 @@ import { ArrowRight, Shield, Trophy, Users, Heart, ChevronLeft, ChevronRight } f
 import { useState, useEffect } from "react";
 import raviSirImg from "@/assets/ravi-sir-img.png";
 
+// ADD THESE IMPORTS FOR HOME CAROUSEL
+import homeCarousel1 from "@/assets/home-carousel/Training session.jpg";
+import homeCarousel2 from "@/assets/home-carousel/competition_success.jpg";
+import homeCarousel3 from "@/assets/home-carousel/Community outreach.jpg";
+import homeCarousel4 from "@/assets/home-carousel/Master class.jpg";
+
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [bookingModal, setBookingModal] = useState<{ isOpen: boolean; type: "trial" | "csr" }>({
     isOpen: false,
     type: "trial"
   });
-  
-  // Auto-sliding carousel images
+
+  // UPDATE CAROUSEL IMAGES TO USE HOME-CAROUSEL FOLDER
   const carouselImages = [
-    { src: heroImage, alt: "Training Session" },
-    { src: heroImage, alt: "Competition Success" },
-    { src: heroImage, alt: "Community Outreach" },
-    { src: heroImage, alt: "Master Class" }
+    { src: homeCarousel1, alt: "Training Session" },
+    { src: homeCarousel2, alt: "Competition Success" },
+    { src: homeCarousel3, alt: "Community Outreach" },
+    { src: homeCarousel4, alt: "Master Class" }
   ];
 
   useEffect(() => {
