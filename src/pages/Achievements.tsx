@@ -295,11 +295,12 @@ const Achievements = () => {
                   </h3>
 
                   <div className="max-w-4xl mx-auto relative">
-                    <div className="aspect-video rounded-2xl overflow-hidden relative">
+                    <div className="aspect-video rounded-2xl overflow-hidden relative bg-black/10">
                       <img
                         src={competitionImages[currentSlide].src}
                         alt={competitionImages[currentSlide].alt}
-                        className="w-full h-full object-cover"
+                        // CHANGE TO FILL WIDTH AND HEIGHT
+                        className="w-full h-full object-fill"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                       <div className="absolute bottom-6 left-6 text-white">
@@ -307,8 +308,6 @@ const Achievements = () => {
                           {competitionImages[currentSlide].alt}
                         </h3>
                       </div>
-
-                      
                     </div>
 
                     <div className="flex justify-center space-x-2 mt-6">
