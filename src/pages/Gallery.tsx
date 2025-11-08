@@ -171,9 +171,62 @@ const Gallery: React.FC = () => {
   // batch size - reduced for faster initial load
   const BATCH_SIZE = 6;
 
-  // *** Glob path is now specific to section3 ***
+  // *** Loaders ***
+  // global loader (used by section3 logic) - keep as-is if you want section3 lazy loading behavior
   const loaders = import.meta.glob("../assets/gallery/section3/**/*.{jpg,jpeg,png,webp,svg,JPG,JPEG,PNG,WEBP}");
   const paths = Object.keys(loaders).sort();
+
+  // Dedicated loader for section2 folder (synchronously loaded into state)
+  const loadersSection2 = import.meta.glob("../assets/gallery/section2/**/*.{jpg,jpeg,png,webp,svg,JPG,JPEG,PNG,WEBP}");
+  const section2Paths = Object.keys(loadersSection2).sort();
+
+  // State to hold images for section2
+  const [section2Images, setSection2Images] = useState<{ src: string; alt: string }[]>([]);
+
+  // Load all section2 images once and cache them in state
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      if (!mounted) return;
+      if (section2Paths.length === 0) {
+        setSection2Images([]);
+        return;
+      }
+      try {
+        // preload + mark loaded
+        const imgs = await Promise.all(
+          section2Paths.map(async (p) => {
+            const mod = await (loadersSection2 as any)[p]();
+            const src = (mod as any).default ?? mod;
+            // preload image so we can mark it loaded immediately
+            await new Promise<void>((resolve, reject) => {
+              const img = new Image();
+              img.onload = () => {
+                // mark caches so render logic treats this as loaded
+                loadedImagesCache.current.set(src, true);
+                setLoadedImages(prev => new Set(prev).add(src));
+                resolve();
+              };
+              img.onerror = () => {
+                // still resolve so one broken file doesn't block others
+                console.error("Failed to preload:", src);
+                resolve();
+              };
+              img.src = src;
+            });
+            const filename = p.split("/").pop() ?? "";
+            return { src, alt: filename.replace(/\.[^/.]+$/, "") };
+          })
+        );
+        if (mounted) setSection2Images(imgs);
+      } catch (e) {
+        console.error("Failed to load section2 images:", e);
+      }
+    })();
+    return () => {
+      mounted = false;
+    };
+  }, []); // run once on mount
 
   // --- SECTIONED PATHS: map files to section folders (expects folders named 'section1','section2','section3') ---
   const sectionPaths: Record<string, string[]> = {
@@ -432,14 +485,8 @@ const Gallery: React.FC = () => {
     section2: {
       id: "section2",
       name: "Newspaper clippings",
-      images: [
-        { src: "", alt: "Clipping 1" },
-        { src: "", alt: "Clipping 2" },
-        { src: "", alt: "Clipping 3" },
-        { src: "", alt: "Clipping 4" },
-        { src: "", alt: "Clipping 5" },
-        { src: "", alt: "Clipping 6" },
-      ],
+      // images populated from src/assets/gallery/section2 via loadersSection2
+      images: section2Images,
     },
     section3: {
       id: "section3",
@@ -466,18 +513,17 @@ const Gallery: React.FC = () => {
 
     return (
       <div className="relative max-w-7xl mx-auto px-4">
-        {/* Image grid - use consistent gap that matches row gaps */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Array.from(rows.entries()).map(([rowIndex, rowImages]) => {
-            const isRowComplete = completeRows.has(rowIndex) || 
-              renderedRowsCache.current.get(rowIndex);
+            // compute row completeness by checking each image's loaded flag
+            const areAllImagesLoaded = rowImages.every(img => loadedImagesCache.current.get(img.src) || loadedImages.has(img.src));
+            const isRowComplete = areAllImagesLoaded || completeRows.has(rowIndex) || renderedRowsCache.current.get(rowIndex);
             const isRowLoading = loadingRows.has(rowIndex);
 
             return (
               <React.Fragment key={`row-${rowIndex}`}>
                 {rowImages.map((image, imageIndex) => {
-                  const isImageLoaded = loadedImagesCache.current.get(image.src) ||
-                    loadedImages.has(image.src);
+                  const isImageLoaded = loadedImagesCache.current.get(image.src) || loadedImages.has(image.src);
 
                   return (
                     <Card
@@ -530,7 +576,7 @@ const Gallery: React.FC = () => {
 
         {/* Loading indicator - align with grid gap */}
         {!allLoaded && (
-          <div className="pt-6"> {/* Match grid gap-6 */}
+          <div className="pt-6">
             <div className="inline-flex items-center gap-2 text-sm text-gray-500">
               <div className="w-4 h-4 border-2 border-primary/30 border-t-primary/80 
                             rounded-full animate-spin" />
@@ -539,7 +585,6 @@ const Gallery: React.FC = () => {
           </div>
         )}
 
-        {/* Hidden sentinel - minimal height without affecting layout */}
         <div 
           ref={sentinelRef} 
           className="w-full h-4" 
