@@ -32,9 +32,9 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="../pages/about" className="text-white/70 hover:text-white transition-colors">About Us</a></li>
-              <li><a href="../pages/achievements" className="text-white/70 hover:text-white transition-colors">Achievements</a></li>
-              <li><a href="../pages/gallery" className="text-white/70 hover:text-white transition-colors">Gallery</a></li>
+              <li><a href="../pages/About" className="text-white/70 hover:text-white transition-colors">About Us</a></li>
+              <li><a href="../pages/Achievements" className="text-white/70 hover:text-white transition-colors">Achievements</a></li>
+              <li><a href="../pages/Gallery" className="text-white/70 hover:text-white transition-colors">Gallery</a></li>
             </ul>
           </div>
           
@@ -71,7 +71,7 @@ const Footer = () => {
         
         <div className="border-t border-white/20 mt-8 pt-8 text-center">
           <p className="text-white/70 text-sm">
-            © 2025 RB Horangee Do-Jang Association. All rights reserved. Website made by Manas and Geet.
+            © 2025 RB Horangee Do-Jang Association. All rights reserved. Website made by Manas and Linux.
           </p>
         </div>
       </div>
