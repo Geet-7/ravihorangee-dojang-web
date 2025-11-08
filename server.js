@@ -9,11 +9,22 @@ app.use(express.json());
 app.post('/api/send', async (req, res) => {
   const { name, email, message } = req.body;
 
+  // Get credentials from environment variables
+  const emailUser = process.env.EMAIL_USER;
+  const emailPass = process.env.EMAIL_PASS;
+
+  if (!emailUser || !emailPass) {
+    return res.status(500).json({ 
+      success: false, 
+      error: 'Email configuration not set up properly' 
+    });
+  }
+
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'impasarkarmanas02@gmail.com',
-      pass: 'uumn llbp gmzc naae'
+      user: emailUser,
+      pass: emailPass
     }
   });
 
@@ -26,8 +37,11 @@ app.post('/api/send', async (req, res) => {
     });
     res.status(200).json({ success: true });
   } catch (err) {
+    console.error('Email error:', err);
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
-app.listen(5000, () => console.log('Server running on port 5000'));
+// Render uses PORT environment variable
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

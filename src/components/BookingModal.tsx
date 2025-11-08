@@ -36,8 +36,9 @@ const BookingModal = ({ isOpen, onClose, type }: BookingModalProps) => {
         : `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nMessage: ${formData.message}`;
 
     try {
-      // CHANGE FROM localhost:5000 TO RELATIVE PATH
-      const response = await fetch("/api/send", {
+      // CHANGE THIS TO YOUR RENDER SERVER URL
+      // Replace 'your-app-name' with your actual Render service name
+      const response = await fetch("https://ravihorangee-dojang-web-server.onrender.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
