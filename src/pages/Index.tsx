@@ -271,6 +271,52 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Hero Section - Moved to be the last section */}
+      <section className="hero-section">
+        <div className="absolute inset-0">
+          {/* <img
+            src={heroImage}
+            alt="Master Ravi Sir"
+            className="w-full h-full object-cover opacity-20"
+          /> */}
+                     <div className="absolute inset-0 bg-gradient-to-b from-primary/50 to-secondary/80 md:from-primary/80"></div>
+      
+        </div>
+        
+        <div className="hero-content container mx-auto px-4">
+          {/* <Badge className="mb-6 bg-white/20 text-white border-white/30">
+            Head Coach: Ravindra Bhandari (Ravi Sir)
+          </Badge> */}
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            RB Horangee<br />
+            <span className="text-primary-glow">Do-Jang Association</span>
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
+            Building discipline, confidence, and character through the traditional art of Taekwondo. 
+            Join our community of champions and discover your potential.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              variant="power" 
+              size="lg" 
+              className="text-lg px-8 py-4"
+              onClick={() => setBookingModal({ isOpen: true, type: "trial" })}
+            >
+              Book Free Trial
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+            <Button 
+              variant="secondary-power" 
+              size="lg" 
+              className="text-lg px-8 py-4"
+              onClick={() => setBookingModal({ isOpen: true, type: "csr" })}
+            >
+              CSR Inquiry
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <Footer />
 

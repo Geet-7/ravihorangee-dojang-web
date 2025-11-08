@@ -162,7 +162,7 @@ const Gallery: React.FC = () => {
 
   // <<< UPDATE THIS STATE INITIALIZATION >>>
   const [activeSection, setActiveSection] = useState<string>(
-    location.state?.defaultSection || "section1"
+    location.state?.defaultSection || "section2" // Changed from "section1" to "section2"
   );
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
@@ -562,10 +562,11 @@ const Gallery: React.FC = () => {
     },
   };
 
+  // Change the sectionsMeta order to put Class after Competitions
   const sectionsMeta = [
-    { id: "section1", title: galleryCategories.section1.name },
-    { id: "section2", title: galleryCategories.section2.name },
-    { id: "section3", title: galleryCategories.section3.name },
+    { id: "section2", title: galleryCategories.section2.name }, // Newspaper clippings
+    { id: "section3", title: galleryCategories.section3.name }, // Competitions
+    { id: "section1", title: galleryCategories.section1.name }, // Class (moved to last)
   ];
 
   // Modified renderGalleryGrid with better loading text positioning
