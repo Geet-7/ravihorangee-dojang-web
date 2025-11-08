@@ -72,7 +72,7 @@ const Footer = () => {
         
         <div className="border-t border-white/20 mt-8 pt-8 text-center">
           <p className="text-white/70 text-sm">
-            © 2025 RB Horangee Do-Jang Association. All rights reserved. Website made by Manas and Linux.
+            © 2025 RB Horangee Do-Jang Association. All rights reserved. Website made by Manas and Linux..
           </p>
         </div>
       </div>
